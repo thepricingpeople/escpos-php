@@ -1008,7 +1008,19 @@ class Printer
         self::validateString($str, __FUNCTION__);
         $this -> buffer -> writeTextRaw((string)$str);
     }
-    
+
+    /**
+     * Go to next black mark (Top Of Form), without using the Cut method
+
+     * Note: Black mark detection has to be enabled on the printer
+     *
+     * $return void
+     */
+    public function topOfForm()
+    {
+        $this->connector->write(self::GS . self::FF);
+    }
+
     /**
      * Wrapper for GS ( k, to calculate and send correct data length.
      *
